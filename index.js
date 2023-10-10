@@ -1,35 +1,29 @@
-// Variáveis
-let nomeHeroi = "Ragher" 
-let xpHeroi = 10000
-let nivelHeroi
+// Começo criando as variáveis para nome e XP do herói
+let nomeHeroi = "Ragher";
+let xpHeroi = 0;
 
-// Estrutura de decisão com switch case para classificar o nível
-switch (true) {
-  case xpHeroi < 1000:
-    nivelHeroi = "Ferro"
-    break
-  case xpHeroi >= 1001 && xpHeroi <= 2000:
-    nivelHeroi = "Bronze"
-    break
-  case xpHeroi >= 2001 && xpHeroi <= 5000:
-    nivelHeroi = "Prata"
-    break
-  case xpHeroi >= 6001 && xpHeroi <= 7000:
-    nivelHeroi = "Ouro"
-    break
-  case xpHeroi >= 7001 && xpHeroi <= 8000:
-    nivelHeroi = "Platina"
-    break
-  case xpHeroi >= 8001 && xpHeroi <= 9000:
-    nivelHeroi = "Ascendente"
-    break
-  case xpHeroi >= 9001 && xpHeroi <= 10000:
-    nivelHeroi = "Imortal"
-    break
-    
-  default:
-    nivelHeroi = "Radiante";
+// Aqui crio um array com os níveis de XP e nível correspondente
+const xpIntervalos = [
+  { min: 0, max: 1000, nivel: "Ferro" },
+  { min: 1001, max: 2000, nivel: "Bronze" },
+  { min: 2001, max: 5000, nivel: "Prata" },
+  { min: 5001, max: 6000, nivel: "Ouro" },
+  { min: 6001, max: 7000, nivel: "Platina" },
+  { min: 7001, max: 8000, nivel: "Ascendente" },
+  { min: 8001, max: 9000, nivel: "Imortal" },
+  { min: 9001, max: 10000, nivel: "Radiante" },
+];
+
+// Aqui crio um loop para calcular o nível do herói
+for (let xpAtual = 0; xpAtual <= xpHeroi; xpAtual += 100) {
+  let nivelHeroi = "Ferro"; // Nível padrão
+
+  for (const intervalo of xpIntervalos) {
+    if (xpAtual >= intervalo.min && xpAtual <= intervalo.max) {
+      nivelHeroi = intervalo.nivel;
+      break; // Encontrou o nível, pode sair do loop interno
+    }
+  }
+
+  console.log("O Herói de nome " + nomeHeroi + " está no nível de " + nivelHeroi);
 }
-
-// Mensagem de saída
-console.log( "O Herói de nome " + nomeHeroi + " está no nível de " + nivelHeroi )
